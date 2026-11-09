@@ -36,7 +36,8 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - uses: android-actions/setup-android@v3
+      - name: Kiểm tra Android SDK có sẵn trên máy GitHub
+        run: echo "ANDROID_HOME=$ANDROID_HOME" && ls "$ANDROID_HOME"
 
       - name: Tạo dự án Capacitor
         run: |
