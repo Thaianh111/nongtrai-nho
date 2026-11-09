@@ -9,6 +9,7 @@ on:
       - index.html
       - manifest.webmanifest
       - icon-512.png
+      - assets/brand/**
       - tools/android/**
       - .github/workflows/android-apk.yml
   workflow_dispatch:
@@ -44,6 +45,8 @@ jobs:
           mkdir -p build/www build/assets
           cp index.html manifest.webmanifest icon-192.png icon-512.png apple-touch-icon.png build/www/
           cp tools/android/icon-1024.png build/assets/icon-only.png
+          cp tools/android/icon-foreground.png build/assets/icon-foreground.png
+          cp tools/android/icon-background.png build/assets/icon-background.png
           cd build
           npm init -y > /dev/null
           npm install --no-audit --no-fund @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6 @capacitor/assets@3
