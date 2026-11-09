@@ -1,0 +1,17 @@
+{
+  "name": "Nông Trại Nhỏ",
+  "short_name": "Nông Trại Nhỏ",
+  "description": "Về quê làm nông với ông nội: trồng trọt, câu cá, nấu ăn, ăn Tết miền Tây. Một game của VTA Games.",
+  "lang": "vi",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#1c140e",
+  "theme_color": "#2b1d14",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
