@@ -724,7 +724,6 @@ body { padding: 0; }
 #vtaSplash .vtaTail{transform-box:fill-box;transform-origin:0% 100%;animation:vtaWag .35s ease-in-out .9s 6 alternate}
 #vtaSplash .nm{font:900 clamp(30px,9vh,64px)/1 var(--title,"Baloo 2",system-ui,sans-serif);letter-spacing:.04em;color:#ffd45a;text-shadow:0 4px 0 #3a2418,0 0 24px rgba(255,212,90,.35)}
 #vtaSplash .nm span{display:inline-block;animation:vtaUp .5s cubic-bezier(.2,1.4,.4,1) both}
-#vtaSplash .sub{font:700 clamp(12px,2.6vh,16px)/1 var(--body,system-ui,sans-serif);letter-spacing:.3em;text-transform:uppercase;color:#e9c98a;opacity:0;animation:vtaFade .6s ease-out 1.4s forwards}
 #vtaSplash .tip{position:absolute;bottom:3vh;font:600 11px/1 var(--body,sans-serif);color:rgba(233,201,138,.55)}
 @keyframes vtaPop{0%{transform:scale(.2) rotate(-20deg);opacity:0}100%{transform:none;opacity:1}}
 @keyframes vtaWag{from{transform:rotate(-14deg)}to{transform:rotate(12deg)}}
@@ -782,7 +781,6 @@ body { padding: 0; }
 </svg>
 </div>
 <div class="nm"><span style="animation-delay:0.55s">V</span><span style="animation-delay:0.61s">T</span><span style="animation-delay:0.67s">A</span><span style="animation-delay:0.73s">&nbsp;</span><span style="animation-delay:0.79s">G</span><span style="animation-delay:0.85s">a</span><span style="animation-delay:0.91s">m</span><span style="animation-delay:0.97s">e</span><span style="animation-delay:1.03s">s</span></div>
-<div class="sub">Võ Thái Anh trình bày</div>
 <div class="tip">Chạm để bỏ qua</div>
 </div>
 <script>(function(){var el=document.getElementById('vtaSplash');if(!el)return;var done=false;function go(){if(done)return;done=true;el.classList.add('out');setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},750);}el.addEventListener('pointerdown',go);window.addEventListener('keydown',function k(){go();window.removeEventListener('keydown',k);});setTimeout(go,3600);})();</script>
@@ -11453,13 +11451,17 @@ body { padding: 0; }
           rbox(lx - 34, 0, 68, 6, 2, '#e8eef6', 0.8);
           g.fillStyle = 'rgba(220,235,255,' + (0.07 * fl) + ')'; g.beginPath(); g.moveTo(lx - 34, 6); g.lineTo(lx + 34, 6); g.lineTo(lx + 90, 205); g.lineTo(lx - 90, 205); g.fill();
         }
-        /* lịch treo tường khoanh ngày Tết, đồng hồ 9 giờ */
-        var kx = wx + ww + 26;
-        rbox(kx, 40, 36, 42, 2, '#f6f1e4', 1); box2(kx, 40, 36, 10, '#c4584a', 1);
-        g.fillStyle = '#fff'; g.font = '800 7px sans-serif'; g.fillText('THÁNG CHẠP', kx + 2.5, 47.5);
-        for (i = 0; i < 4; i++) for (j = 0; j < 5; j++) box2(kx + 4 + j * 6, 54 + i * 6, 4, 4, 'rgba(58,36,24,0.25)');
-        g.lineWidth = 1.2; g.strokeStyle = '#d9332a'; g.beginPath(); g.ellipse(kx + 30, 74, 4.5, 4, 0, 0, Math.PI * 2); g.stroke();
-        var clx = kx + 18, cly = 112; ell(g, clx, cly, 13, 13, '#2a3348', 1.4); ell(g, clx, cly, 11, 11, '#f6f1e4');
+        /* lịch treo tường tháng Chạp (khoanh ngày 30 Tết), đồng hồ 9 giờ */
+        var kw = 50, kx = Math.min(wx + ww + 18, W - 80 - kw), ky = 30, kcx = kx + kw / 2;
+        line(g, kcx, ky - 6, kx + 8, ky, '#5a4024', 0.8); line(g, kcx, ky - 6, kx + kw - 8, ky, '#5a4024', 0.8); ell(g, kcx, ky - 6, 1.6, 1.6, '#c8ccd4', 0.6);
+        rbox(kx, ky, kw, 54, 2, '#f6f1e4', 1); rbox(kx, ky, kw, 13, 2, '#c4372e', 1);
+        for (i = 0; i < 4; i++) ell(g, kx + 9 + i * 10.5, ky + 1, 1.3, 1.3, '#3a2418');
+        g.fillStyle = '#fff8e6'; g.font = '800 6.4px sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('THÁNG CHẠP', kcx, ky + 7.2);
+        g.fillStyle = '#9a8a70'; g.font = '700 4px sans-serif'; ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'].forEach(function (d, k2) { g.fillText(d, kx + 5 + k2 * 6.67, ky + 17); });
+        for (i = 0; i < 5; i++) for (j = 0; j < 7; j++) { var dn = i * 7 + j - 1; if (dn < 1 || dn > 30) continue; g.fillStyle = j === 6 || dn >= 23 ? '#c4372e' : '#3a2418'; g.font = '700 4.4px sans-serif'; g.fillText(String(dn), kx + 5 + j * 6.67, ky + 23.5 + i * 6.2); }
+        g.lineWidth = 1.1; g.strokeStyle = '#d9332a'; g.beginPath(); g.ellipse(kx + 5 + 3 * 6.67, ky + 23.5 + 4 * 6.2, 3.6, 3, 0, 0, Math.PI * 2); g.stroke();
+        g.textAlign = 'left'; g.textBaseline = 'alphabetic';
+        var clx = kcx, cly = ky + 82; ell(g, clx, cly, 13, 13, '#2a3348', 1.4); ell(g, clx, cly, 11, 11, '#f6f1e4');
         for (i = 0; i < 12; i++) line(g, clx + Math.cos(i * Math.PI / 6) * 9, cly + Math.sin(i * Math.PI / 6) * 9, clx + Math.cos(i * Math.PI / 6) * 10.4, cly + Math.sin(i * Math.PI / 6) * 10.4, OL, 0.8);
         line(g, clx, cly, clx - 6.5, cly, OL, 1.6); var sa = t * 1.05 - Math.PI / 2; line(g, clx, cly, clx + Math.cos(sa) * 9, cly + Math.sin(sa) * 9, '#c4584a', 0.6);
         /* tủ hồ sơ + chậu cây */
