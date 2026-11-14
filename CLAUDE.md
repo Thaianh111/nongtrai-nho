@@ -81,3 +81,7 @@ elsewhere in the repo, so they are restated here rather than lost:
 - **Helpers in `.claude/scripts/` emit observations, never verdicts.** A script
   that scores or judges will eventually contradict a mode or override it cannot
   see. (Cited by `artifact-check.sh` and `adr-dep-graph.sh`.)
+
+## Task Observer (bật đầu mỗi buổi)
+- Ở đầu mỗi buổi làm việc có nhiều bước (code, sửa lỗi, làm asset, playtest...), **gọi skill `task-observer` trước khi bắt đầu** để nó ghi lại chỗ cần cải thiện skill. Sau khi context bị nén (compact) hoặc `/clear` cũng gọi lại.
+- Task Observer chỉ được **đề xuất** sửa/tạo skill. Trước khi thay đổi skill có sẵn (game-brainstorm, game-prototype, game-playtest-report, pixelfx, artcraft-game-assets, các skill của Game Studios...), phải hỏi anh Thái Anh và chờ đồng ý.
